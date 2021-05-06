@@ -1,4 +1,14 @@
 ; Call Func passing array as obj
+
+; Example:
+; local $ary[2] = ["1stparam","2ndparam"]
+
+; CallAry("wordf",$ary)
+
+; func wordf($param1,$param2)
+;   msgbox("","Showing parameters",$param1 &"-" &$param2)
+; endfunc
+
 Func CallAry($func, $ary)
    If IsArray($ary) Then
 	  $param = ""
@@ -16,3 +26,4 @@ Func CallAry($func, $ary)
 	  Return SetError(2,5,"Not an array")
    EndIf
 EndFunc
+

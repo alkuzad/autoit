@@ -9,6 +9,12 @@
 ;   msgbox("","Showing parameters",$param1 &"-" &$param2)
 ; endfunc
 
+Local $_CallAry_debug = False
+
+Func SetCallAryDebug($debug)
+   Local $_CallAry_debug = $debug
+EndFunc
+
 Func CallAry($func, $ary)
    If IsArray($ary) Then
 	  $param = ""
@@ -20,10 +26,12 @@ Func CallAry($func, $ary)
 	  Next
 	  $param = StringTrimRight($param,1)
 	  $str = 'Call ("' &$func &'",' &$param &')'
+	  if $_CallAry_debug Then
+		 ConsoleWrite("Executing this call: " & $str)
+	  EndIf
 	  Execute ($str)
 	  If @error Then Return (3,2,"Error in calling function")
    Else
 	  Return SetError(2,5,"Not an array")
    EndIf
 EndFunc
-
